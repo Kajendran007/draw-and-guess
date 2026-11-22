@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Draw & Guess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<section class="page center stack on" id="home">
+  <h1>Draw &amp; Guess</h1>
+  <p>11 players, 11 rounds. Everyone draws once. Everyone else guesses.</p>
+  <button class="go" id="toCreate">Create a room</button>
+  <button class="alt" id="toJoin">Join a room</button>
+</section>
+
+<section class="page center stack" id="create">
+  <h2>Create a room</h2>
+  <input id="cName" placeholder="Your name" maxlength="16" autocomplete="off">
+  <button class="go" id="doCreate">Create room</button>
+  <p class="err" id="cErr"></p>
+  <button class="alt back">Back</button>
+</section>
+
+<section class="page center stack" id="join">
+  <h2>Join a room</h2>
+  <input id="jCode" placeholder="Room code" maxlength="6" autocomplete="off">
+  <input id="jName" placeholder="Your name" maxlength="16" autocomplete="off">
+  <button class="go" id="doJoin">Join room</button>
+  <p class="err" id="jErr"></p>
+  <button class="alt back">Back</button>
+</section>
+
+<section class="page" id="lobby">
+  <div class="card stack">
+    <h2>Waiting for players</h2>
+    <div class="row"><input id="link" readonly style="flex:1;min-width:200px"><button id="copy">Copy invite link</button></div>
+    <p><b id="count"></b> <span id="lobbyHint"></span></p>
+    <ul class="players" id="lobbyList"></ul>
+    <button class="go" id="start">Start game</button>
+  </div>
+</section>
+
+<section class="page" id="game">
+  <div class="bar card">
+    <b id="roundInfo"></b>
+    <span class="word" id="wordBox"></span>
+    <span class="timer" id="timer"></span>
+  </div>
+  <div class="game">
+    <div>
+      <canvas id="cv" width="800" height="600"></canvas>
+      <div class="tools" id="tools">
+        <button class="alt" id="pen">Pencil</button>
+        <button class="alt" id="eraser">Eraser</button>
+        <span class="row" id="swatches"></span>
+        <label>Size <input type="range" id="size" min="2" max="40" value="6" style="width:100px;padding:0"></label>
+        <button class="alt" id="undo">Undo</button>
+        <button class="alt" id="clear">Clear</button>
+      </div>
+      <div class="card stack" id="guessBox" style="margin-top:12px">
+        <b>What is it?</b>
+        <div class="row"><input id="guess" placeholder="Type your guess" maxlength="60" autocomplete="off" style="flex:1"><button class="go" id="send">Guess</button></div>
+        <p class="msg" id="msg"></p>
+      </div>
+    </div>
+    <div class="card"><b>Players</b><ul class="players" id="gameList" style="grid-template-columns:1fr"></ul></div>
+  </div>
+</section>
+
+<section class="page" id="score">
+  <div class="card stack">
+    <h2 id="sTitle"></h2>
+    <p id="sWord" class="word" style="letter-spacing:0"></p>
+    <p id="sInfo"></p>
+    <ol class="rank" id="sRank"></ol>
+    <p>Next round in <b id="next"></b>s</p>
+  </div>
+</section>
+
+<section class="page center stack" id="final">
+  <h1 id="winner"></h1>
+  <div class="card"><ol class="rank" id="fRank" style="text-align:left"></ol></div>
+  <button class="go" id="again">Play again</button>
+  <p id="againHint"></p>
+</section>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

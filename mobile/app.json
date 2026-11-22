@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Draw & Guess",
+    "slug": "draw-and-guess",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0f1420"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.drawandguess.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0f1420"
+      },
+      "package": "com.drawandguess.app",
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "@react-native-async-storage/async-storage",
+        {
+          "StorageType": "default"
+        }
+      ]
+    ]
+  }
+}

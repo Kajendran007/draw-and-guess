@@ -1,0 +1,8 @@
+{
+  "name": "draw-and-guess",
+  "version": "1.0.0",
+  "description": "Real-time multiplayer drawing and guessing game",
+  "main": "server.js",
+  "scripts": { "start": "node server.js", "dev": "PLAYERS=3 ROUND_SECONDS=30 node server.js" },
+  "dependencies": { "express": "^4.19.2", "socket.io": "^4.7.5" }
+}
